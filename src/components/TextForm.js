@@ -55,19 +55,19 @@ export default function TextForm(props) {
           ></textarea>
         </div>
 
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button className={`btn btn-${props.mode==='light'?'primary':'dark'} mx-1 my-1`} onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+        <button className={`btn btn-${props.mode==='light'?'primary':'dark'} mx-1 my-1`} onClick={handleLoClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button className={`btn btn-${props.mode==='light'?'primary':'dark'} mx-1 my-1`} onClick={handleClearClick}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button className={`btn btn-${props.mode==='light'?'primary':'dark'} mx-1 my-1`} onClick={handleCopy}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        <button className={`btn btn-${props.mode==='light'?'primary':'dark'} mx-1 my-1`} onClick={handleExtraSpaces}>
           Remove Spaces
         </button>
       </div>
@@ -75,9 +75,9 @@ export default function TextForm(props) {
       <div className="container my-3" style={{color: props.mode==='dark'?'white':'#121517'}}>
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(" ").length} Words, {text.length} Characters
+          {text.split(" ").filter((element)=>{return element.length!==0}).length} Words, {text.length} Characters
         </p>
-        <p>{0.008 * text.split(" ").length + " "} Minutes Read</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length + " "} Minutes Read</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter something to Preview here"}</p>
       </div>
